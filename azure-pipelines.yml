@@ -18,3 +18,7 @@ steps:
     containerRegistry: jvazurecontainerregistry
     tags: |
       latest
+- script: docker run -e $ANCHOREURL -t anchore/engine-cli anchore-cli system status
+  displayName: 'scan image with anchore'
+  env:
+    ANCHOREURL: $(anchore-engine-url)
