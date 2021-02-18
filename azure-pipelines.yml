@@ -19,9 +19,9 @@ steps:
     tags: |
       latest
 - script: |
-    docker run -e ANCHORE_CLI_URL=$ENGINEURL -t anchore/engine-cli anchore-cli image add docker.io/busybox:latest
-    docker run -e ANCHORE_CLI_URL=$ENGINEURL -t anchore/engine-cli anchore-cli image wait docker.io/busybox:latest
-    docker run -e ANCHORE_CLI_URL=$ENGINEURL -t anchore/engine-cli anchore-cli evaluate check docker.io/busybox:latest
+    docker run -e ANCHORE_CLI_URL=$ENGINEURL -t anchore/engine-cli anchore-cli image add jvtestregistry.azurecr.io/azure-alpine-test:latest
+    docker run -e ANCHORE_CLI_URL=$ENGINEURL -t anchore/engine-cli anchore-cli image wait jvtestregistry.azurecr.io/azure-alpine-test:latest
+    docker run -e ANCHORE_CLI_URL=$ENGINEURL -t anchore/engine-cli anchore-cli evaluate check jvtestregistry.azurecr.io/azure-alpine-test:latest
   displayName: 'scan image with anchore'
   env:
     ANCHOREURL: $(anchore-engine-url)
