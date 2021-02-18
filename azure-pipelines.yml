@@ -10,5 +10,8 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: docker build -t azure-alpine-test .
-  displayName: 'build image'
+- script: | 
+    docker build -t azure-alpine-test .
+    docker tag azure-alpine-test:latest jvtestregistry.azurecr.io/azure-alpine-test:latest
+    docker push jvtestregistry.azurecr.io/azure-alpine-test:latest
+  displayName: 'build and push image to ACR'
